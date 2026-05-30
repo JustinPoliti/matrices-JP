@@ -4,6 +4,10 @@
 #include <string>
 
 using namespace std;
+
+const int EMPRESAS = 5;
+const int MESES = 12;
+
 int main() {
 	
 	int datos2023[EMPRESAS][MESES];
@@ -64,5 +68,42 @@ int main() {
     archivo2023.close();
     archivo2024.close();
     archivo2025.close();
-	
+    
+    ofstream resultado("output/resultado.csv");
+
+    if (!resultado)
+    {
+        cout << "Error al crear el archivo de salida." << endl;
+        return 1;
+    }
+
+    resultado << "Empresa,Total 2023,Total 2024,Total 2025,Total 3 Años\n";
+
+    for (int i = 0; i < EMPRESAS; i++)
+    {
+        int total2023 = 0;
+        int total2024 = 0;
+        int total2025 = 0;
+
+        for (int j = 0; j < MESES; j++)
+        {
+            total2023 += datos2023[i][j];
+            total2024 += datos2024[i][j];
+            total2025 += datos2025[i][j];
+        }
+
+        int totalGeneral = total2023 + total2024 + total2025;
+
+        resultado << "Empresa " << i + 1 << ","
+                  << total2023 << ","
+                  << total2024 << ","
+                  << total2025 << ","
+                  << totalGeneral << endl;
+    }
+
+    resultado.close();
+
+    cout << "Proceso completado archivo generado con exito" << endl;
+
+    return 0;
 }
