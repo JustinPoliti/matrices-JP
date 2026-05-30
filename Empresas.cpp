@@ -22,5 +22,47 @@ int main() {
     }
 
     string linea, dato;	
+    
+     for (int i = 0; i < EMPRESAS; i++)
+    {
+        getline(archivo2023, linea);
+        stringstream ss(linea);
+
+        for (int j = 0; j < MESES; j++)
+        {
+            getline(ss, dato, ',');
+            datos2023[i][j] = stoi(dato);
+        }
+    }
+
+
+    for (int i = 0; i < EMPRESAS; i++)
+    {
+        getline(archivo2024, linea);
+        stringstream ss(linea);
+
+        for (int j = 0; j < MESES; j++)
+        {
+            getline(ss, dato, ',');
+            datos2024[i][j] = stoi(dato);
+        }
+    }
+
+
+    for (int i = 0; i < EMPRESAS; i++)
+    {
+        getline(archivo2025, linea);
+        stringstream ss(linea);
+
+        for (int j = 0; j < MESES; j++)
+        {
+            getline(ss, dato, ',');
+            datos2025[i][j] = stoi(dato);
+        }
+    }
+
+    archivo2023.close();
+    archivo2024.close();
+    archivo2025.close();
 	
 }
